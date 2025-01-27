@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LuxVoy Tour - Exclusive Transportation</title>
+    <title>LuxVoy Tour - Exclusive Transfer</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -47,6 +47,32 @@
             border-radius: 8px;
         }
 
+        form {
+            display: grid;
+            grid-gap: 15px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        input, select, textarea {
+            padding: 12px;
+            background: #111;
+            border: 1px solid var(--gold);
+            color: var(--chrome);
+            border-radius: 4px;
+        }
+
+        button {
+            background: var(--gold);
+            color: var(--black);
+            padding: 15px 30px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
         .price-table {
             width: 100%;
             border-collapse: collapse;
@@ -68,24 +94,6 @@
             color: var(--gold);
         }
 
-        .price-table tbody tr:nth-child(odd) {
-            background-color: #111;
-        }
-
-        .price-table tbody tr:hover {
-            background-color: #222;
-        }
-
-        .price-table td {
-            font-size: 14px;
-        }
-
-        .price-table td:last-child {
-            text-align: left;
-            color: var(--chrome);
-            font-style: italic;
-        }
-
         .note {
             font-size: 14px;
             color: var(--gold);
@@ -100,6 +108,30 @@
     </header>
 
     <div class="container">
+        <!-- Booking Section -->
+        <div class="section">
+            <h2>Book a Ride</h2>
+            <form id="bookingForm" action="https://formspree.io/f/xldgjnkw" method="POST">
+                <input type="text" name="name" placeholder="Full Name" required>
+                <input type="tel" name="phone" placeholder="Phone Number" required>
+                <input type="email" name="email" placeholder="Email Address" required>
+                <input type="datetime-local" name="datetime" required>
+                <input type="text" name="pickup" placeholder="Pickup Location" required>
+                <input type="text" name="destination" placeholder="Destination" required>
+                <select name="service_type" required>
+                    <option value="vip">VIP Hourly Rental</option>
+                    <option value="airport_transfer">Airport Transfer</option>
+                </select>
+                <select name="payment" required>
+                    <option>Cash</option>
+                    <option>Credit Card</option>
+                    <option>Crypto</option>
+                </select>
+                <input type="hidden" name="_next" value="https://luxvoy-tour.com/thank_you.html">
+                <button type="submit">Book Now</button>
+            </form>
+        </div>
+
         <!-- Pricing Section -->
         <div class="section">
             <h2>Pricing from Edinburgh Airport</h2>
@@ -137,52 +169,12 @@
                         <td>£105</td>
                         <td>Direct transfer, max 3 passengers</td>
                     </tr>
-                    <tr>
-                        <td>North Berwick</td>
-                        <td>£85</td>
-                        <td>Direct transfer, max 3 passengers</td>
-                    </tr>
-                    <tr>
-                        <td>Newcastle</td>
-                        <td>£300</td>
-                        <td>Direct transfer, max 3 passengers</td>
-                    </tr>
-                    <tr>
-                        <td>Aberdeen</td>
-                        <td>£300</td>
-                        <td>Direct transfer, max 3 passengers</td>
-                    </tr>
-                    <tr>
-                        <td>Inverness</td>
-                        <td>£400</td>
-                        <td>Direct transfer, max 3 passengers</td>
-                    </tr>
-                    <tr>
-                        <td>Pitlochry</td>
-                        <td>£145</td>
-                        <td>Direct transfer, max 3 passengers</td>
-                    </tr>
-                    <tr>
-                        <td>Loch Lomond</td>
-                        <td>£150</td>
-                        <td>Direct transfer, max 3 passengers</td>
-                    </tr>
-                    <tr>
-                        <td>Troon</td>
-                        <td>£150</td>
-                        <td>Direct transfer, max 3 passengers</td>
-                    </tr>
-                    <tr>
-                        <td>Manchester</td>
-                        <td>£500</td>
-                        <td>Direct transfer, max 3 passengers</td>
-                    </tr>
                 </tbody>
             </table>
             <p class="note">All prices are for a one-way trip from Edinburgh Airport, max 3 passengers.</p>
         </div>
 
-        <!-- Hourly Rental Section -->
+        <!-- VIP Hourly Rental -->
         <div class="section">
             <h2>VIP Hourly Rental</h2>
             <table class="price-table">
@@ -197,7 +189,7 @@
                     <tr>
                         <td>VIP Hourly Rental</td>
                         <td>£100/hour</td>
-                        <td>Luxury BMW 530e, includes drinks (Red Bull, water, optional alc), max 2 passengers</td>
+                        <td>Luxury BMW 530e, includes drinks (Red Bull, water, optional alcohol), max 3 passengers</td>
                     </tr>
                 </tbody>
             </table>
