@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LuxVoy Tour - Exclusive Transportation</title>
+    <style>
+        :root {
+            --gold: #D4AF37;
+            --chrome: #E8E8E8;
+            --black: #000000;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            background-color: var(--black);
+            color: var(--chrome);
+        }
+
+        header {
+            text-align: center;
+            padding: 20px;
+            border-bottom: 2px solid var(--gold);
+        }
+
+        .logo {
+            max-width: 300px;
+            height: auto;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .section {
+            margin: 40px 0;
+            padding: 20px;
+            border: 1px solid var(--gold);
+            border-radius: 8px;
+        }
+
+        form {
+            display: grid;
+            grid-gap: 15px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        input, select, textarea {
+            padding: 12px;
+            background: #111;
+            border: 1px solid var(--gold);
+            color: var(--chrome);
+            border-radius: 4px;
+        }
+
+        button {
+            background: var(--gold);
+            color: var(--black);
+            padding: 15px 30px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .price-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .price-table th, .price-table td {
+            border: 1px solid var(--gold);
+            padding: 12px;
+            text-align: center;
+        }
+
+        .review {
+            background: #111;
+            padding: 15px;
+            margin: 10px 0;
+            border-left: 3px solid var(--gold);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="logo.png" alt="LuxVoy Tour Logo" class="logo">
+    </header>
+
+    <div class="container">
+        <!-- Booking Section -->
+        <div class="section">
+            <h2>Book a Ride</h2>
+            <form id="bookingForm" action="https://formspree.io/f/xldgjnkw" method="POST">
+                <input type="text" name="name" placeholder="Full Name" required>
+                <input type="tel" name="phone" placeholder="Phone Number" required>
+                <input type="email" name="email" placeholder="Email Address" required>
+                <input type="datetime-local" name="datetime" required>
+                <input type="text" name="pickup" placeholder="Pickup Location" required>
+                <input type="text" name="destination" placeholder="Destination" required>
+                <select name="payment">
+                    <option>Cash</option>
+                    <option>Credit Card</option>
+                    <option>Crypto</option>
+                </select>
+                <input type="hidden" name="_next" value="https://your-website-url/thank_you.html">
+                <button type="submit">Book Now</button>
+            </form>
+        </div>
+
+        <!-- Pricing -->
+        <div class="section">
+            <h2>Pricing</h2>
+            <table class="price-table">
+                <tr>
+                    <th>Service</th>
+                    <th>Range</th>
+                    <th>Price</th>
+                </tr>
+                <tr>
+                    <td>Standard</td>
+                    <td>City</td>
+                    <td>50 PLN/h</td>
+                </tr>
+                <tr>
+                    <td>Premium</td>
+                    <td>Regional</td>
+                    <td>100 PLN/h</td>
+                </tr>
+                <tr>
+                    <td>VIP</td>
+                    <td>National</td>
+                    <td>200 PLN/h</td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- Reviews -->
+        <div class="section">
+            <h2>Customer Reviews</h2>
+            <div id="reviews">
+                <!-- Reviews will be added here -->
+            </div>
+            <h3>Add Review</h3>
+            <form id="reviewForm" action="https://formspree.io/f/your-review-form-id" method="POST">
+                <input type="text" name="name" placeholder="Your Name" required>
+                <textarea name="review" placeholder="Your Review" rows="4" required></textarea>
+                <input type="hidden" name="_next" value="https://your-website-url/thank_you_review.html">
+                <button type="submit">Submit Review</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Review Form Handling
+        document.getElementById('reviewForm').addEventListener('submit', function(e) {
+            const name = this.elements.name.value;
+            const review = this.elements.review.value;
+            
+            const reviewDiv = document.createElement('div');
+            reviewDiv.className = 'review';
+            reviewDiv.innerHTML = `<strong>${name}</strong><p>${review}</p>`;
+            
+            document.getElementById('reviews').prepend(reviewDiv);
+        });
+
+        // Booking Form Handling
+        document.getElementById('bookingForm').addEventListener('submit', function() {
+            // Optional: Add loading animation
+        });
+    </script>
+</body>
+</html>
